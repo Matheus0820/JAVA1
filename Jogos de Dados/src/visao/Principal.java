@@ -1,15 +1,16 @@
 package visao;
 // Jogo de dados
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
-import java.util.ArrayList;
-
-import dominio.Sorteio;
 import dominio.Apostadores;
+import dominio.Sorteio;
+import persistencia.Arquivo;
 
 public class Principal {
 
@@ -18,6 +19,8 @@ public class Principal {
 		
 		int QuaApost;
 		int PremioTotal = 0;
+		String histo = "";
+		Arquivo h1 = new Arquivo();
 		
 		Sorteio s1 = new Sorteio();
 		
@@ -93,7 +96,10 @@ public class Principal {
 				
 			} while((ListadeAp.size()) != QuaApost);
 			
-			
+			for(int i = 0; i < QuaApost; i++) {
+				histo += "Apostador " + i + " -> Nome: " + ListadeAp.get(i).getNomeApostador();
+				histo += " - Numero Apostado: " + ListadeAp.get(i).getNumApostado() + "-";
+			}
 			
 		}
 		
@@ -115,20 +121,29 @@ public class Principal {
 		
 		JFrame jn = new JFrame();
 		JLabel lab;
+		JLabel hist = new JLabel(h1.getLinha());
+		hist.setSize(250, 250);
+		jn.add(hist);
 		if(ganhador != 30) {
 		lab = new JLabel("<html> Números sorteados: " + s1.getDado1() + " - " + s1.getDado2() + "<br> Ganhador: " + ListadeAp.get(ganhador).getNomeApostador() + " -- Número apostado: " + ListadeAp.get(ganhador).getNumApostado() + "<br> Valor Apostado: " + ListadeAp.get(ganhador).getValorApostado() + " Reais <br> Valor ganho: " + PremioTotal + "Reais </html>", SwingConstants.CENTER);
+		histo += "\n\n ---- \n Números sorteados: " + s1.getDado1() + " - " + s1.getDado2() + "\n Ganhador: " + ListadeAp.get(ganhador).getNomeApostador() + "\n ---- \n";  
+		lab.setSize(250, 250);
 		jn.add(lab); 
 		}
 		else {
 			lab = new JLabel("<html> Não ouve nenhum ganhador!!" + "<br> Números sorteados: " + s1.getDado1() + " - " + s1.getDado2() + "<br> Valor total apostado: " + PremioTotal + " Reais </html>", SwingConstants.CENTER);
+			histo += "\n\n ---- \n Números sorteados: " + s1.getDado1() + " - " + s1.getDado2() + "\nNão Houve Ganhador!";
+			lab.setSize(250, 250);
 			jn.add(lab); 
 		}
+		
+		h1.set_arq(histo);
 		
 		jn.setTitle("Ganhador!");
 		jn.setLocationRelativeTo(null);
 		//jn.setResizable(false);
 		jn.setVisible(true);
-		jn.setSize(300,300);
+		jn.setSize(500,500);
 		jn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		 
