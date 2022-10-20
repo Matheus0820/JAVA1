@@ -20,7 +20,7 @@ public class Arquivo {
 		this.linha = linha;
 	}
 
-	public void ler_arq() {
+	public void ler_arq(boolean esq, String l) {
 		try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
 			
 			while (flag != null) {
@@ -30,22 +30,22 @@ public class Arquivo {
 				
 			}
 			
+			if(esq) {
+				FileWriter fw = new FileWriter(arq);
+				BufferedWriter bw = new BufferedWriter(fw);
+				
+				bw.write(l);
+				bw.newLine();
+				bw.close();
+				fw.close();
+			}
+			
 		} catch (IOException e) {
 			e.getMessage();
 		}
 
 }
 	
-	public void set_arq(String h) {
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(arq))) {
-			
-			bw.write(h);
-			
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	
 
-
+}
