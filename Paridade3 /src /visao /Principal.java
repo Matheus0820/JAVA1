@@ -10,6 +10,7 @@
 
 package visao;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Principal { 
@@ -18,10 +19,13 @@ public class Principal {
 		
 		String leitura; 
 		String Vleitura[][] = new String[7][5];
-		int ParHori[] = new int[5];
+		String Vleitura2[][] = new String[8][6];
+		int ParHori[] = new int[8];
 		int Hori = 0; 
 		int ParVert[] = new int[8];
 		int Vert = 0;
+		int ParHoriR[] = new int[6];
+		int ParVertR[] = new int[8];
 		int guard[] = new int[8]; 
 		int quant = 0, bitFTrns = 0, bitFRept = 0;
 		
@@ -30,7 +34,7 @@ public class Principal {
 		System.out.println("Paridade impar ou par? 1 - impar / 2 - par");
 		int escolha = ler.nextInt();
 		
-    	System.out.println("Digite os Bits: ");
+    	System.out.println("Digite os Bits que seram enviados(padrão: 7 linhas e 5 colunas): ");
     	ler.nextLine();
     	for(int i = 0; i < 7; i++) {
     		leitura = ler.nextLine();
@@ -42,8 +46,8 @@ public class Principal {
 	    for(int i = 0; i < Vleitura.length; i++) {
 	    	System.out.println(Vleitura.length);
 	    	for(int j = 0; j < Vleitura[i].length; j++) {
-	    		System.out.print(Vleitura[i][j]);
-	    	if(Integer.parseInt(Vleitura[i][j]) == 1) {
+	    		//System.out.print(Vleitura[i][j]);
+	    	if(Integer.parseInt(Vleitura[i][j]) == 1) {//j altera toda hora
 
 	    		quant++;
 	    }
@@ -94,18 +98,18 @@ public class Principal {
  	    case 1: 
  	    	System.out.println(quant);
  	    	if(quant % 2 == 1) {
- 	    		Hori = 0; // colocar no final do Array 
+ 	    		ParHori[5] = 0; // colocar no final do Array 
  	    	} else {
  	    	
- 	    		Hori = 1; 
+ 	    		ParHori[5] = 1; 
  	    	}
  	    	break; 
  	    case 2: 
  	    	System.out.println(quant);
  	    	if(quant % 2 == 0) {
- 	    		Hori = 0;
+ 	    		ParHori[5] = 0;
  	    	} else {
- 	    		Hori = 1; 
+ 	    		ParHori[5] = 1; 
  	    	}
  	    	break; 
  	    }
@@ -162,29 +166,64 @@ public class Principal {
 	 	    case 1: 
 	 	    	System.out.println(quant);
 	 	    	if(quant % 2 == 1) {
-	 	    		Vert = 0; //colocar no final do Arry ParVert
+	 	    		ParVert[7] = 0; //colocar no final do Arry ParVert
 	 	    	} else {
 	 	    	
-	 	    		Vert = 1; 
+	 	    		ParVert[7] = 1; 
 	 	    	}
 	 	    	break; 
 	 	    case 2: 
 	 	    	System.out.println(quant);
 	 	    	if(quant % 2 == 0) {
-	 	    		Vert = 0;
+	 	    		ParVert[7] = 0;
 	 	    	} else {
-	 	    		Vert = 1; 
+	 	    		ParVert[7] = 1; 
 	 	    	}
 	 	    	break; 
 	 	    }
 
 	 	
 	 	  //Colocar a leitura da tabela de 8 linhas e 6 colunas aqui
+	 	  System.out.println("Digite os Bits que seram enviados(padrão: 8 linhas e 6 colunas): ");
+	 	  for(int i = 0; i < 8; i++) {
+	    		leitura = ler.nextLine();
+	    		Vleitura2[i] = leitura.split("");
+		    }
+	 	  for(int i = 0; i < 8; i++) {
+	 		 ParHoriR[i] = Integer.parseInt(Vleitura2[i][5]);
+	 	  }
+	 	 for(int i = 0; i < 6; i++) {
+	 		  
+	 		ParVertR[i] = Integer.parseInt(Vleitura2[7][i]);
+	 		
+	 	  }
 	 	   
-	 	   if(Hori == Vert) {
+	 	   
+	 	  if(ParVert.equals(ParVertR) && ParHori.equals(ParHoriR)) {
+	 		  System.out.println("Mensagem Recebida com sucesso");
+	 		  System.out.println(Arrays.toString(ParVert) + " - " + Arrays.toString(ParVertR));
+	 		  System.out.println(Arrays.toString(ParHori) + " - " + Arrays.toString(ParHoriR));
+	 	  } else {
+	 		  System.out.println("Ouve um erro!");
+	 		 System.out.println(Arrays.toString(ParVert) + " - " + Arrays.toString(ParVertR));
+	 		  System.out.println(Arrays.toString(ParHori) + " - " + Arrays.toString(ParHoriR));
+	 		  
+	 		  for(int i = 0; i < ParVertR.length; i++) {
+	 			  
+	 		  }
+	 	  }
+	 	  
+	 	   /*if(Hori == Vert) {
 	 		   System.out.println("Mensagem Recebida com Sucesso!!");
 	 	   } else {
 	 		  System.out.println("Mensagem Recebida com Erro!!");
-	 	   }
+	 	   }*/
     }
+	
+	
+	    
+	    
+
 	}
+
+
