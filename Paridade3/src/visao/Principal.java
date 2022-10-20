@@ -1,18 +1,28 @@
+/*
+00101
+10110
+00111
+10001
+01001
+11011
+00011
+*/
+
 package visao;
 
 import java.util.Scanner;
 
-public class Principal {
+public class Principal { 
 
 	public static void main(String[] args) {
 		
 		String leitura; 
-		String Vleitura[][] = new String[6][5];
-		int ParHori[] = new int[6];
+		String Vleitura[][] = new String[7][5];
+		int ParHori[] = new int[5];
 		int Hori = 0; 
-		int ParVert[] = new int[7];
+		int ParVert[] = new int[8];
 		int Vert = 0;
-		int guard[] = new int[7]; 
+		int guard[] = new int[8]; 
 		int quant = 0, bitFTrns = 0, bitFRept = 0;
 		
 		Scanner ler = new Scanner(System.in);
@@ -22,16 +32,19 @@ public class Principal {
 		
     	System.out.println("Digite os Bits: ");
     	ler.nextLine();
-    	for(int i = 0; i < 6; i++) {
+    	for(int i = 0; i < 7; i++) {
     		leitura = ler.nextLine();
     		Vleitura[i] = leitura.split("");
 	    }
-	    
+    	int x = 0;
     	//Leitura dos bits horizontais
 	    quant = 0;
 	    for(int i = 0; i < Vleitura.length; i++) {
+	    	System.out.println(Vleitura.length);
 	    	for(int j = 0; j < Vleitura[i].length; j++) {
+	    		System.out.print(Vleitura[i][j]);
 	    	if(Integer.parseInt(Vleitura[i][j]) == 1) {
+
 	    		quant++;
 	    }
 	    	}
@@ -39,20 +52,27 @@ public class Principal {
 	    	 // Definindo a paridade de toda linha de bits na horizontal
 	    	 switch(escolha) {
 	 	    case 1: 
-	 	    	System.out.println(quant);
+	 	    	//System.out.println(quant);
 	 	    	if(quant % 2 == 1) {
-	 	    		ParHori[i] = 0;
+	 	    		if(i < 5) {
+	 	    			ParHori[i] = 0;
+	 	    		}
 	 	    	} else {
-	 	    	
-	 	    		ParHori[i] = 1; 
+	 	    		if(i < 5) {
+	 	    			ParHori[i] = 1;
+	 	    		}
 	 	    	}
 	 	    	break; 
 	 	    case 2: 
-	 	    	System.out.println(quant);
+	 	    	//System.out.println(quant);
 	 	    	if(quant % 2 == 0) {
-	 	    		ParHori[i] = 0;
+	 	    		if(i < 5) {
+	 	    			ParHori[i] = 0;
+	 	    		}
 	 	    	} else {
-	 	    		ParHori[i] = 1; 
+	 	    		if(i < 5) {
+	 	    			ParHori[i] = 1;
+	 	    		}
 	 	    	}
 	 	    	break; 
 	 	    }
@@ -74,7 +94,7 @@ public class Principal {
  	    case 1: 
  	    	System.out.println(quant);
  	    	if(quant % 2 == 1) {
- 	    		Hori = 0;
+ 	    		Hori = 0; // colocar no final do Array 
  	    	} else {
  	    	
  	    		Hori = 1; 
@@ -89,16 +109,17 @@ public class Principal {
  	    	}
  	    	break; 
  	    }
-	    
+	    System.out.println("\n\n\n");
 	    //Leitura dos Bits na Vertical
-	    	for(int i = 0; i < 6; i++) {
-	    		for(int j = 0; j < 5; j++) {
+	    	for(int i = 0; i < 5; i++) {
+	    		for(int j = 0; j < 7; j++) {
 	    			guard[j] = Integer.parseInt(Vleitura[j][i]);
+	    			System.out.print(guard[j]);
 	    		}
-	    		
+	    		System.out.println("");
 	    		quant = 0;
-	    	    for(int v = 0; i < guard.length; v++) {
-	    	    	
+	    	    for(int v = 0; v < guard.length; v++) {
+	    	    	//System.out.println(guard.length);
 	    	    	if(guard[v] == 1) { // Problema Aqui!!!
 	    	    		quant++;
 	    	    }
@@ -141,7 +162,7 @@ public class Principal {
 	 	    case 1: 
 	 	    	System.out.println(quant);
 	 	    	if(quant % 2 == 1) {
-	 	    		Vert = 0;
+	 	    		Vert = 0; //colocar no final do Arry ParVert
 	 	    	} else {
 	 	    	
 	 	    		Vert = 1; 
@@ -158,17 +179,12 @@ public class Principal {
 	 	    }
 
 	 	
+	 	  //Colocar a leitura da tabela de 8 linhas e 6 colunas aqui
+	 	   
 	 	   if(Hori == Vert) {
 	 		   System.out.println("Mensagem Recebida com Sucesso!!");
 	 	   } else {
 	 		  System.out.println("Mensagem Recebida com Erro!!");
 	 	   }
     }
-	
-	
-	    
-	    
-
 	}
-
-
