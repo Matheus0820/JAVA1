@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogododado.TelaDoJogoController">
+   <children>
+      <Pane layoutY="200.0" prefHeight="200.0" prefWidth="301.0" style="-fx-background-color: darkgray;">
+         <children>
+            <Label fx:id="LabelHistorico" alignment="TOP_LEFT" layoutX="13.0" layoutY="35.0" prefHeight="160.0" prefWidth="275.0" text="-">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
+            <Label layoutX="101.0" layoutY="14.0" text="Jogo Anterior">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="299.0" prefHeight="400.0" prefWidth="301.0" style="-fx-background-color: gainsboro;">
+         <children>
+            <Label layoutX="60.0" layoutY="14.0" text="Cadastrar Apostadores">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="69.0" layoutY="58.0" text="Nome do Jogador">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="67.0" layoutY="120.0" text="Número da Aposta">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="67.0" layoutY="183.0" text="Valor da Aposta">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="TextFildNomejogador" layoutX="69.0" layoutY="86.0" promptText="Ex.: Matheus" />
+            <TextField fx:id="TextFildNumeroAposta" layoutX="69.0" layoutY="147.0" promptText="Ex.: 9" />
+            <TextField fx:id="TextFildVelorAposta" layoutX="69.0" layoutY="206.0" promptText="Ex.: 100" />
+            <Button fx:id="ButtonCadastrarJogador" layoutX="83.0" layoutY="247.0" mnemonicParsing="false" onAction="#NovoJogador" text="Cadastrar Jogador">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="ButtonJogar" layoutX="112.0" layoutY="357.0" mnemonicParsing="false" onAction="#ComecaJogo" text="Jogar!!">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutX="-2.0" prefHeight="200.0" prefWidth="301.0" style="-fx-background-color: silver;">
+         <children>
+            <Label layoutX="74.0" layoutY="14.0" text="Jogadores Cadastrados">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="LabelJogadore" alignment="TOP_LEFT" layoutX="21.0" layoutY="31.0" prefHeight="160.0" prefWidth="275.0" text="-">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
